@@ -1,6 +1,5 @@
 import * as vscode from "vscode";
-// import * as nls from "vscode-nls";
-// import { generateHTMLByHttp } from "../lib/loadLocalHTML";
+import { PORT } from "../command/test";
 import { context } from "../globalState";
 import { generateHTMLByHttp } from "../lib/loadLocalHTML";
 
@@ -10,15 +9,16 @@ export let onlineDocumentPanel: vscode.WebviewPanel | undefined;
 export const onlineDocumentDisposable = vscode.commands.registerCommand(
   "open-html-in-vscode.openweb",
   (relativePath: any) => {
-    console.log("params-2", relativePath);
-
     if (onlineDocumentPanel) {
+      onlineDocumentPanel.webview.postMessage({
+        command: "reload"
+      });
       onlineDocumentPanel.reveal();
     } else {
       onlineDocumentPanel = vscode.window.createWebviewPanel(
         "webview_type",
         "Tabs Title",
-        1, // 显示的 Col
+        vscode.ViewColumn.Two,
         {
           enableScripts: true,
           retainContextWhenHidden: true,
@@ -26,7 +26,7 @@ export const onlineDocumentDisposable = vscode.commands.registerCommand(
       );
     }
     onlineDocumentPanel.webview.html = generateHTMLByHttp(
-      `http://127.0.0.1:3000/${relativePath}`
+      `http://127.0.0.1:${PORT}/${relativePath}`
     );
 
     // 关闭时，销毁 onlineDocumentPanel 变量
