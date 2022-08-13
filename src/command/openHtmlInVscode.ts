@@ -1,6 +1,5 @@
 import * as vscode from "vscode";
 import * as cp from "child_process";
-import { relative, resolve } from "path";
 import path = require("path");
 const sh = require('shell-exec');
 let rootPath = vscode.workspace.workspaceFolders?.[0]?.uri.fsPath || "";
@@ -8,12 +7,12 @@ let _process: any;
 export let PORT = 3005;
 
 //新增菜单 打开文档
-export const test2 = vscode.commands.registerTextEditorCommand(
-  "open-html-in-vscode.test2",
+export const openHtmlInVscode = vscode.commands.registerTextEditorCommand(
+  "open-html-in-vscode.startHttpServer",
   async (params) => {
     let filePath = params.document.uri.fsPath;
     if (await isHttpSeverExit()) {
-      let relativePath = path.relative(rootPath, filePath)
+      let relativePath = path.relative(rootPath, filePath);
       startHttpServer(PORT, relativePath);
     } else {
       vscode.window.showInformationMessage("请先安装 http-server");
@@ -21,6 +20,7 @@ export const test2 = vscode.commands.registerTextEditorCommand(
   }
 );
 
+// 检测是否存在 http-server 存在[可以使用现成库判断，如 which]
 function isHttpSeverExit() {
   return new Promise((resolve, reject) => {
     cp.exec("http-server --version", (_err, stdout) => {
@@ -39,7 +39,7 @@ async function startHttpServer(port: string | number, relativePath: string) {
     _process.stdout?.on("data", (data: any) => {
       if (!data) return;
       if (data.includes("Available on:")) {
-        console.log(`${PORT}端口启动成功`);
+        console.log(`${PORT} 端口启动成功`);
         vscode.commands.executeCommand("open-html-in-vscode.openweb", relativePath)
       }
     })

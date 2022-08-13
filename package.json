@@ -11,7 +11,8 @@
   ],
   "activationEvents": [
     "onCommand:open-html-in-vscode.openweb",
-    "onCommand:open-html-in-vscode.test2"
+    "onCommand:open-html-in-vscode.openHtmlInVscode",
+    "onCommand:open-html-in-vscode.fastGitReset"
   ],
   "main": "./dist/extension.js",
   "contributes": {
@@ -21,16 +22,24 @@
         "title": "openweb"
       },
       {
-        "command": "open-html-in-vscode.test2",
-        "title": "test2"
+        "command": "open-html-in-vscode.openHtmlInVscode",
+        "title": "openHtmlInVscode"
+      },
+      {
+        "command": "open-html-in-vscode.fastGitReset",
+        "title": "fastGitReset"
       }
     ],
     "keybindings": [
       {
-        "command": "open-html-in-vscode.test2",
+        "command": "open-html-in-vscode.openHtmlInVscode",
         "key": "ctrl+f10",
         "mac": "cmd+r",
         "when": "editorTextFocus"
+      },
+      {
+        "command": "open-html-in-vscode.fastGitReset",
+        "mac": "cmd+t"
       }
     ]
   },

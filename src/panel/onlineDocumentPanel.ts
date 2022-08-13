@@ -1,12 +1,12 @@
 import * as vscode from "vscode";
-import { PORT } from "../command/test";
+import { PORT } from "../command/openHtmlInVscode";
 import { context } from "../globalState";
 import { generateHTMLByHttp } from "../lib/loadLocalHTML";
 
 export let onlineDocumentPanel: vscode.WebviewPanel | undefined;
 
 //新增菜单 打开文档
-export const onlineDocumentDisposable = vscode.commands.registerCommand(
+export const onlineDocument = vscode.commands.registerCommand(
   "open-html-in-vscode.openweb",
   (relativePath: any) => {
     if (onlineDocumentPanel) {
