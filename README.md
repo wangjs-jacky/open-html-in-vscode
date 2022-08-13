@@ -16,9 +16,13 @@
 
 使用方案：快捷键 `command + R`
 
+[GiF 图片预览地址](https://wjs-tik.oss-cn-shanghai.aliyuncs.com/2022-08-13%2022-52-44.2022-08-13%2022_54_13.gif)
+
 ![](https://wjs-tik.oss-cn-shanghai.aliyuncs.com/2022-08-13%2022-52-44.2022-08-13%2022_54_13.gif)
 
 快捷方案：快捷键 `command + t`快速切换 `Git` 版本。
+
+[GiF 图片预览地址](https://wjs-tik.oss-cn-shanghai.aliyuncs.com/2022-08-13%2023-09-51.2022-08-13%2023_13_34.gif)
 
 ![](https://wjs-tik.oss-cn-shanghai.aliyuncs.com/2022-08-13%2023-09-51.2022-08-13%2023_13_34.gif)
 
