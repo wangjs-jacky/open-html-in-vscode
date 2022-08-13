@@ -13,7 +13,6 @@ export function activate(context: vscode.ExtensionContext) {
   context.subscriptions.push(onlineDocument);
   context.subscriptions.push(openHtmlInVscode);
   context.subscriptions.push(fastGitReset);
-
 }
 
 export function deactivate() { }
